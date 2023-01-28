@@ -14,9 +14,9 @@
 import { ref } from 'vue';
 
 const localStorageKey = 'temperatureChartNotes';
-const localStorageItem = localStorage.getItem(localStorageKey) ?? '';
+const localStorageItem = localStorage.getItem(localStorageKey) || '';
 
-const notes = ref(JSON.parse(localStorageItem).notes);
+const notes = localStorageItem ? ref(JSON.parse(localStorageItem).notes) : '';
 
 const onNotesChanged = (event: Event): void => {
   localStorage.setItem(
